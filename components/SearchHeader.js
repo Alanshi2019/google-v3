@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import { useRef } from "react";
 import { MicrophoneIcon, SearchIcon, XIcon } from "@heroicons/react/solid";
 import User from "./User";
+import SearchHeaderOptions from "./SearchHeaderOptions";
 
 export default function SearchHeader() {
   const router = useRouter();
@@ -13,7 +14,7 @@ export default function SearchHeader() {
     event.preventDefault();
     const term = searchInputRef.current.value;
     if (!term.trim()) return;
-    router.push(`/search?term=${term.trim()}`);
+    router.push(`/search?term=${term.trim()}&searchType=`);
   }
   return (
     <header className="sticky top-0 bg-white">
@@ -24,6 +25,7 @@ export default function SearchHeader() {
           objectFit="contain"
           height="40"
           className="cursor-pointer"
+          alt="logo"
           src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/1200px-Google_2015_logo.svg.png"
         />
         <form className="flex border border-gray-200 rounded-full shadow-lg px-6 py-3 ml-10 mr-5 flex-grow max-w-3xl items-center">
@@ -43,6 +45,7 @@ export default function SearchHeader() {
         </form>
         <User className="ml-auto whitespace-nowrap" />
       </div>
+      <SearchHeaderOptions />
     </header>
   );
 }
