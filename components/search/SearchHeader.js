@@ -9,7 +9,6 @@ export default function SearchHeader() {
   const router = useRouter();
   const searchInputRef = useRef(null);
 
-  // TODO: reuse the function from index.js
   function search(event) {
     event.preventDefault();
     const term = searchInputRef.current.value;
