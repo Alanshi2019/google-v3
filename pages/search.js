@@ -3,8 +3,9 @@ import SearchHeader from "../components/SearchHeader";
 import SearchResults from "../components/SearchResults";
 import Response from "../data/Response";
 import { useRouter } from "next/router";
+import ImageResults from "../components/ImageResults";
 
-export default function Search({ results }) {
+export default function search({ results }) {
   const router = useRouter();
   const title = `${router.query.term} - Search page`;
   return (
@@ -13,8 +14,15 @@ export default function Search({ results }) {
         <title>{title}</title>
       </Head>
 
+      {/* Search Header */}
       <SearchHeader />
-      <SearchResults results={results} />
+
+      {/* Search web and Images Results */}
+      {router.query.searchType === "image" ? (
+        <ImageResults results={results} />
+      ) : (
+        <SearchResults results={results} />
+      )}
     </div>
   );
 }
