@@ -2,7 +2,7 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import { useRef } from "react";
 import { MicrophoneIcon, SearchIcon, XIcon } from "@heroicons/react/solid";
-import User from "./User";
+import User from "../User";
 import SearchHeaderOptions from "./SearchHeaderOptions";
 
 export default function SearchHeader() {

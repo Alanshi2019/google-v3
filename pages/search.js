@@ -1,9 +1,9 @@
 import Head from "next/head";
-import SearchHeader from "../components/SearchHeader";
-import SearchResults from "../components/SearchResults";
+import SearchHeader from "../components/search/SearchHeader";
+import SearchResults from "../components/search/SearchResults";
+import ImageResults from "../components/search/ImageResults";
 import Response from "../data/Response";
 import { useRouter } from "next/router";
-import ImageResults from "../components/ImageResults";
 
 export default function Search({ results }) {
   const router = useRouter();
@@ -29,7 +29,7 @@ export default function Search({ results }) {
 
 export async function getServerSideProps(context) {
   // Loading mock data to avoid reaching the maximum requests limit by Google.
-  const mockData = true;
+  const mockData = false;
   const startIndex = context.query.start || "1";
   const data = mockData
     ? Response
