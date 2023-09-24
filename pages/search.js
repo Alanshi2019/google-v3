@@ -5,7 +5,7 @@ import Response from "../data/Response";
 import { useRouter } from "next/router";
 import ImageResults from "../components/ImageResults";
 
-export default function search({ results }) {
+export default function Search({ results }) {
   const router = useRouter();
   const title = `${router.query.term} - Search page`;
   return (
