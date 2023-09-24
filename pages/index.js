@@ -9,12 +9,22 @@ import { useRouter } from "next/router";
 export default function Home() {
   const router = useRouter();
   const searchInputRef = useRef(null);
+
   const search = (event) => {
     event.preventDefault();
     const term = searchInputRef.current.value;
     if (!term.trim()) return;
     router.push(`/search?term=${term.trim()}&searchType=`);
   };
+
+  async function randomSearch(event) {
+    event.preventDefault();
+    const randomTerm = await fetch(
+      "https://random-word-api.herokuapp.com/word?number=1"
+    ).then((response) => response.json());
+    if (!randomTerm) return;
+    router.push(`/search?term=${randomTerm}&searchType=`);
+  }
 
   return (
     <div>
@@ -51,7 +61,9 @@ export default function Home() {
           <button onClick={search} className="btn">
             Google Search
           </button>
-          <button className="btn">I`&apos;`m Feeling Lucky</button>
+          <button onClick={randomSearch} className="btn">
+            I&apos;m Feeling Lucky
+          </button>
         </div>
       </form>
 
